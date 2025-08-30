@@ -1,3 +1,11 @@
-<p>
-  user-form works!
-</p>
+<form>
+  <app-input label="name" placeholder="Jane" />
+  <app-input label="last name" placeholder="Doe" />
+  <app-input label="email" placeholder="example@gmail.com" type="email" />
+  <app-input label="password" placeholder="**************" type="password" />
+
+  <div class="buttons">
+    <app-button text="cancel" shape="round" [hidden]="!isRegister" (click)="gotToLogin()"/>
+    <app-button text="{{ textBtn }}" shape="round" />
+  </div>
+</form>

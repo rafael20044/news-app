@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-form',
@@ -8,8 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserFormComponent  implements OnInit {
 
-  constructor() { }
+  @Input() isRegister:boolean = true;
+  textBtn:string = '';
 
-  ngOnInit() {}
+  constructor(private readonly router:Router) { }
 
+  ngOnInit() {
+    (this.isRegister) ? console.log('register form') : console.log(' no is register');
+    this.textBtn = (this.isRegister) ? 'Register' : 'Update';
+  }
+
+  gotToLogin(){
+    this.router.navigate(['/login']);
+  }
 }

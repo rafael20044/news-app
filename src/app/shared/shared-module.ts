@@ -41,6 +41,6 @@ import { EncryptProvider } from './providers/encrypt-provider';
     FormsModule,
     ReactiveFormsModule,
   ],
-  exports:[InputComponent, ButtonComponent, UserFormComponent, SelectComponent,],
+  exports:[InputComponent, ButtonComponent, UserFormComponent, SelectComponent, HeaderComponent, ModalComponent,],
 })
 export class SharedModule { }

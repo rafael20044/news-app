@@ -1,3 +1,7 @@
-<p>
-  select works!
-</p>
+<ion-select label="{{ label }}" label-placement="stacked" [formControl]="control" [value]="value" >
+  @if (countries) {
+    @for (item of countries.data; track $index) {
+      <ion-select-option value="{{ item.name }}">{{ item.name }}</ion-select-option>
+    }
+  }
+</ion-select>

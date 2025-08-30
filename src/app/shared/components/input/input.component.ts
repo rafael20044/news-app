@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 type InputType = 'text' | 'password' | 'email' | 'number';
 type LabelPlacementType = 'fixed' | 'floating' | 'stacked';
@@ -20,6 +21,7 @@ export class InputComponent  implements OnInit {
   @Input() fill:FillType = '';
   @Input() helperText:string = '';
   @Input() errorText:string = '';
+  @Input() control:FormControl = new FormControl();
 
   constructor() { }
 

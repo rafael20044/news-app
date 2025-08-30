@@ -14,6 +14,7 @@ export class ButtonComponent  implements OnInit {
   @Input() text:string = '';
   @Input() shape:ShapeType = '';
   @Input() type:ButtonType = 'button';
+  @Input() disabled:boolean = false;
 
   constructor() { }
 

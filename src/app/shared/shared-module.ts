@@ -12,6 +12,9 @@ import { PrincipalNewsComponent } from './components/principal-news/principal-ne
 import { SelectComponent } from './components/select/select.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
+import { HttpService } from './providers/http-service';
+import { StorageProvider } from './providers/storage-provider';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -27,13 +30,15 @@ import { UserFormComponent } from './components/user-form/user-form.component';
     PrincipalNewsComponent,
     SelectComponent,
     SideBarComponent,
-    UserFormComponent
+    UserFormComponent,
   ],
-  providers: [],
+  providers: [HttpService, StorageProvider,],
   imports: [
     CommonModule,
     IonicModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
-  exports:[InputComponent, ButtonComponent, UserFormComponent,],
+  exports:[InputComponent, ButtonComponent, UserFormComponent, SelectComponent,],
 })
 export class SharedModule { }

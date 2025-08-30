@@ -15,6 +15,8 @@ import { UserFormComponent } from './components/user-form/user-form.component';
 import { HttpService } from './providers/http-service';
 import { StorageProvider } from './providers/storage-provider';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserService } from './services/user-service';
+import { EncryptProvider } from './providers/encrypt-provider';
 
 
 
@@ -32,7 +34,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SideBarComponent,
     UserFormComponent,
   ],
-  providers: [HttpService, StorageProvider,],
+  providers: [HttpService, StorageProvider, UserService, EncryptProvider],
   imports: [
     CommonModule,
     IonicModule,

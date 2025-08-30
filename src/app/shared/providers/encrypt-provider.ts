@@ -5,10 +5,15 @@ import { JSEncrypt } from 'jsencrypt';
   providedIn: 'root'
 })
 export class EncryptProvider {
+
+  private crypt = new JSEncrypt();
   constructor(){}
 
   encryptText(text:string){
-    const crypt = new JSEncrypt();
-    return crypt.encrypt(text).toString();
+    return this.crypt.encrypt(text).toString();
+  }
+
+  match(text:string, textEncrypt:string):boolean{
+    return this.crypt.decrypt(textEncrypt) === text;
   }
 }

@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user-service';
 import { v4 as uuid } from 'uuid';
-import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-user-form',
@@ -45,7 +44,9 @@ export class UserFormComponent  implements OnInit {
   }
 
   onSubmit(){
-    this.userService.createUser({uiid: uuid(), ...this.formGroup.value});
-
+    const user = this.userService.createUser({uiid: uuid(), ...this.formGroup.value});
+    if (user && this.userService.authenticate(user.email, this.formGroup.value.password)) {
+      this.router.navigate(['/home']);
+    }
   }
 }

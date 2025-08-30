@@ -1,1 +1,14 @@
-<ion-input label="Default input"/>
+<ion-input
+    [type]="type"
+    [label]="label"
+    [placeholder]="placeholder"
+    [value]="value"
+    [labelPlacement]="labelPlacement"
+    [fill]="fill"
+    [helperText]="helperText"
+    [errorText]="errorText"
+>
+    @if (type === 'password') {
+        <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+    }
+</ion-input>

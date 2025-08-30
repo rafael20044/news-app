@@ -34,6 +34,6 @@ import { UserFormComponent } from './components/user-form/user-form.component';
     CommonModule,
     IonicModule,
   ],
-  exports:[],
+  exports:[InputComponent, ButtonComponent,],
 })
 export class SharedModule { }

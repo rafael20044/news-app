@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+type ShapeType = 'round' | '';
+type ButtonType = 'button' | 'submit';
 
 @Component({
   selector: 'app-button',
@@ -7,6 +10,10 @@ import { Component, OnInit } from '@angular/core';
   standalone: false,
 })
 export class ButtonComponent  implements OnInit {
+
+  @Input() text:string = '';
+  @Input() shape:ShapeType = '';
+  @Input() type:ButtonType = 'button';
 
   constructor() { }
 

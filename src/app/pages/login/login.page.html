@@ -2,7 +2,7 @@
   <div class="content">
     <img class="img" src="assets/icon/news-logo.png" />
     <h1>Login</h1>
-    <form>
+    <form (submit)="login()">
       <app-input 
         label="email"  
         type="email" 
@@ -10,6 +10,7 @@
         helperText="Enter a valid email"
         labelPlacement="stacked"
         fill="outline"
+        [control]="emailControl"
       />
       <app-input 
         label="password"  
@@ -17,17 +18,18 @@
         placeholder="************" 
         helperText="Enter your password"
         labelPlacement="stacked"
-      />
-      <app-button 
-        type="submit"
-        text="Login"
-        shape="round"
+        [control]="passwordControl"
       />
       <app-button 
         type="button"
         shape="round"
         text="Create account"
         (click)="goToRegister()"
+      />
+      <app-button 
+        type="submit"
+        text="Login"
+        shape="round"
       />
     </form>
   </div>

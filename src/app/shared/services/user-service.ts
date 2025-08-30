@@ -20,25 +20,25 @@ export class UserService {
     const users:IUserData[] = this.getUsers();
     let existsUser = this.findUser(user.email);
     if (existsUser) {
-      this.toast.showToast('Email already exists', 3000);
+      this.toast.showToast('Email already exists', 3000, 'warning');
       return;
       //throw new Error('user already exists');
     }
     users.push(user);
     this.storage.set(Const.USERS, users);
-    this.toast.showToast('Your account was created', 3000);
+    this.toast.showToast('Your account was created', 3000, 'primary');
     return user;
   }
 
   authenticate(email:string, password:string):IUserData | null{
     const user = this.findUser(email); 
     if (!user) {
-      this.toast.showToast('Email does not exist', 3000);
+      this.toast.showToast('Email does not exist', 3000, 'danger');
       return null;
     }
     const match = this.encrypt.match(password, user.password);
     if (!match) {
-      this.toast.showToast('Incorrect email or password', 3000);
+      this.toast.showToast('Incorrect email or password', 3000, 'danger');
       return null;
     }
     this.storage.set(Const.AUTH, user);

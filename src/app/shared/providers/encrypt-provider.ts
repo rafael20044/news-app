@@ -1,19 +1,26 @@
 import { Injectable } from '@angular/core';
-import { JSEncrypt } from 'jsencrypt';
+import * as CryptoJS from 'crypto-js';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EncryptProvider {
 
-  private crypt = new JSEncrypt();
-  constructor(){}
+  private secretKey = environment.SECRET_KEY;
 
-  encryptText(text:string){
-    return this.crypt.encrypt(text).toString();
+  constructor() {}
+
+  encryptText(text: string) {
+    return CryptoJS.AES.encrypt(text, this.secretKey).toString();
   }
 
-  match(text:string, textEncrypt:string):boolean{
-    return this.crypt.decrypt(textEncrypt) === text;
+  decryptText(encryptedText: string): string {
+    const bytes = CryptoJS.AES.decrypt(encryptedText, this.secretKey);
+    return bytes.toString(CryptoJS.enc.Utf8);
+  }
+
+  match(text: string, textEncrypt: string): boolean {
+    return this.decryptText(textEncrypt) === text;
   }
 }

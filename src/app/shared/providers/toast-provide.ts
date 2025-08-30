@@ -8,11 +8,12 @@ export class ToastProvide {
 
   constructor(private toast:ToastController){}
 
-  async showToast(message:string, duration:number = 2000){
+  async showToast(message:string, duration:number = 2000, color:'danger' | 'warning' | 'primary'){
     const toast = await this.toast.create({
       message: message,
       duration: duration,
-      position: 'bottom'
+      position: 'bottom',
+      color: color,
     });
     toast.present();
   }

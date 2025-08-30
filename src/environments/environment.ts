@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   URL_COUNTRIES: 'https://countriesnow.space/api/v0.1/countries/flag/unicode',
+  SECRET_KEY: 'MY-KEY',
 };
 
 /*

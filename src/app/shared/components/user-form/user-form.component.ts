@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user-service';
 import { v4 as uuid } from 'uuid';
+import { ToastProvide } from '../../providers/toast-provide';
 
 @Component({
   selector: 'app-user-form',
@@ -32,6 +33,7 @@ export class UserFormComponent  implements OnInit {
   constructor(
     private readonly router:Router, 
     private readonly userService:UserService,
+    private readonly toastProvider:ToastProvide
   ) { }
 
   ngOnInit() {
@@ -44,6 +46,19 @@ export class UserFormComponent  implements OnInit {
   }
 
   onSubmit(){
+    if (!this.emailControl.valid && 
+        !this.passwordControl.valid && 
+        !this.nameControl.valid && 
+        !this.lastNameControl.valid && 
+        !this.selectControl.valid
+      ) {
+      this.toastProvider.showToast('Please fill all the fields', 3000, 'warning');
+      return;
+    }
+    if (!this.emailControl.valid) {
+      this.toastProvider.showToast('Please enter a valid email', 3000, 'warning');
+      return;
+    }
     const user = this.userService.createUser({uiid: uuid(), ...this.formGroup.value});
     if (user && this.userService.authenticate(user.email, this.formGroup.value.password)) {
       this.router.navigate(['/home']);

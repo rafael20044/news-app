@@ -4,7 +4,7 @@ export interface ICountryData {
     data: IData[]
 }
 
-interface IData {
+export interface IData {
     name: string
     iso2: string
     iso3: string

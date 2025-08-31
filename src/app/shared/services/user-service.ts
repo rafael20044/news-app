@@ -4,6 +4,7 @@ import { IUserData } from 'src/app/interfaces/iuser-data';
 import { EncryptProvider } from '../providers/encrypt-provider';
 import { ToastProvide } from '../providers/toast-provide';
 import { Const } from 'src/app/const/const';
+import { IAuth } from 'src/app/interfaces/iauth';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,29 @@ export class UserService {
     }
     this.storage.set(Const.AUTH, user);
     return user;
+  }
+
+  logout(){
+    this.storage.remove(Const.AUTH);
+  }
+
+  getUserAuth(){
+    return this.storage.get<IAuth>(Const.AUTH);
+  }
+
+  updateUser(user:IUserData){
+    const users:IUserData[] = this.getUsers();
+    let userF = users.find(u => u.uiid === u.uiid);
+    //console.log(`sin modificar: ${userF?.name}`);
+    userF = user;
+    //console.log(`modificado: ${userF.name}`);
+    const newUsers = users.filter(u => u.uiid !== userF.uiid);
+    //console.log(newUsers);
+    userF.password = this.encrypt.encryptText(userF.password);
+    newUsers.push(userF);
+    this.storage.set(Const.USERS, newUsers);
+    this.storage.set(Const.AUTH, userF);
+    this.toast.showToast('Updated', 3000, 'primary');
   }
 
   private findUser(email:string): IUserData | null{

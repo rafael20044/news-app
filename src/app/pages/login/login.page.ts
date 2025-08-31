@@ -39,6 +39,7 @@ export class LoginPage implements OnInit {
     }
     const user = this.userService.authenticate(this.formGroup.value.email, this.formGroup.value.password);
     if (user) {
+      this.formGroup.reset();
       this.router.navigate(['/home']);
     }
   }

@@ -15,17 +15,9 @@ export class SelectComponent  implements OnInit {
   @Input() label:string = '';
   @Input() control:FormControl = new FormControl();
   @Input() value:string = '';
-  countries:ICountryData | null = null;
+  @Input() countries:ICountryData | null = null;
 
-  constructor(private readonly http:HttpService) { }
+  constructor() { }
 
-  ngOnInit() {
-    this.loadCountries();
-  }
-
-  async loadCountries(){
-    const url = environment.URL_COUNTRIES;
-    this.countries = await this.http.get<ICountryData>(url);
-    //console.log(this.countries);
-  }
+  ngOnInit() {}
 }

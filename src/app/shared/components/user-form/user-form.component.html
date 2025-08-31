@@ -3,7 +3,7 @@
   <app-input label="last name" placeholder="Doe" [control]="lastNameControl"/>
   <app-input label="email" placeholder="example@gmail.com" type="email" [control]="emailControl" />
   <app-input label="password" placeholder="**************" type="password" [control]="passwordControl" />
-  <app-select label="Select your country" [control]="selectControl" />
+  <app-select label="Select your country" [control]="selectControl" [countries]="countries"/>
 
   <div class="buttons">
     <app-button text="cancel" shape="round" [hidden]="!isRegister" (click)="gotToLogin()"/>

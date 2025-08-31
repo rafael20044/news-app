@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { UserService } from '../../services/user-service';
 import { v4 as uuid } from 'uuid';
 import { ToastProvide } from '../../providers/toast-provide';
+import { environment } from 'src/environments/environment.prod';
+import { ICountryData } from 'src/app/interfaces/icountry-data';
+import { HttpService } from '../../providers/http-service';
 
 @Component({
   selector: 'app-user-form',
@@ -14,6 +17,7 @@ import { ToastProvide } from '../../providers/toast-provide';
 export class UserFormComponent  implements OnInit {
 
   @Input() isRegister:boolean = true;
+  countries:ICountryData | null = null;
   textBtn:string = '';
 
   nameControl = new FormControl('',[Validators.required,]);
@@ -33,12 +37,14 @@ export class UserFormComponent  implements OnInit {
   constructor(
     private readonly router:Router, 
     private readonly userService:UserService,
-    private readonly toastProvider:ToastProvide
+    private readonly toastProvider:ToastProvide,
+    private readonly http:HttpService
   ) { }
 
   ngOnInit() {
     //(this.isRegister) ? console.log('register form') : console.log(' no is register');
     this.textBtn = (this.isRegister) ? 'Register' : 'Update';
+    this.loadCountries();
   }
 
   gotToLogin(){
@@ -61,7 +67,13 @@ export class UserFormComponent  implements OnInit {
     }
     const user = this.userService.createUser({uiid: uuid(), ...this.formGroup.value});
     if (user && this.userService.authenticate(user.email, this.formGroup.value.password)) {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/home/top-headlines']);
     }
   }
+
+    async loadCountries(){
+      const url = environment.URL_COUNTRIES;
+      this.countries = await this.http.get<ICountryData>(url);
+      //console.log(this.countries);
+    }
 }

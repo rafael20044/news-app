@@ -1,3 +1,15 @@
 <div class="content">
-  <h1>Hollalla</h1>
+  @if(data){
+    <h1>These are some news</h1>
+    @for (item of data.articles; track $index) {
+      <app-card 
+        author="{{ item.author }}" 
+        description="{{ item.description }}" 
+        title="{{ item.title }}"
+        urlImg="{{ item.urlToImage }}"
+        date="{{ item.publishedAt }}"
+        [data]="data.articles[$index]"
+      />
+    }
+  }
 </div>

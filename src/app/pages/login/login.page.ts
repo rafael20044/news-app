@@ -39,7 +39,7 @@ export class LoginPage implements OnInit {
     }
     const user = this.userService.authenticate(this.formGroup.value.email, this.formGroup.value.password);
     if (user) {
-      this.router.navigate(['/home/top-headlines']);
+      this.router.navigate(['/home']);
     }
   }
 }

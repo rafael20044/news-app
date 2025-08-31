@@ -1,3 +1,9 @@
-<ion-content [fullscreen]="true">
-    <app-header/>
-</ion-content>
+<ion-menu contentId="main-content">
+    <app-side-bar />
+</ion-menu>
+<div class="ion-page" id="main-content">
+    <app-header />
+    <ion-content class="ion-padding">
+        <app-principal-news />
+    </ion-content>
+</div>

@@ -1,8 +1,9 @@
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { authGuard } from './guards/auth-guard';
 import { isLoggedGuard } from './guards/is-logged-guard';
+import { httpInterceptorInterceptor } from './interceptors/http-interceptor-interceptor';
 
 const routes: Routes = [
   {
@@ -15,7 +16,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
   },
   {
-    path: 'home/:category',
+    path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
     canActivate:[authGuard]
   },
@@ -25,7 +26,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home/top-headlines',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
 ];
@@ -34,7 +35,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }, ),
   ],
-  providers:[provideHttpClient(), ],
+  providers:[provideHttpClient(withInterceptors([httpInterceptorInterceptor])), ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

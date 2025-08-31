@@ -11,7 +11,7 @@ export class ListComponent  implements OnInit {
 
     listLinks: IList[] = [
       {
-        name: 'top headlines',
+        name: 'Principal news',
         url: '/home/top-headlines',
       },
       {

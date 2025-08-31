@@ -1,15 +1,9 @@
-<ion-menu contentId="main-content" menuId="menu">
-  <app-side-bar />
-</ion-menu>
-
-<div class="ion-page" id="main-content">
-  <ion-header>
-    <ion-toolbar>
-      <div class="bar">
-        <ion-icon name="grid-outline" size="large" (click)="openMenu()" />
-        <h1>News</h1>
-        <img src="assets/icon/news-logo.png" alt="">
-      </div>
-    </ion-toolbar>
-  </ion-header>
-</div>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>News</ion-title>
+    <img src="assets/icon/news-logo.png" alt="">
+  </ion-toolbar>
+</ion-header>

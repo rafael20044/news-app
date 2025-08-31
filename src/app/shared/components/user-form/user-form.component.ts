@@ -67,7 +67,7 @@ export class UserFormComponent  implements OnInit {
     }
     const user = this.userService.createUser({uiid: uuid(), ...this.formGroup.value});
     if (user && this.userService.authenticate(user.email, this.formGroup.value.password)) {
-      this.router.navigate(['/home/top-headlines']);
+      this.router.navigate(['/home']);
     }
   }
 

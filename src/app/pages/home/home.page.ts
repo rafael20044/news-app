@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IonContent, MenuController } from '@ionic/angular';
 import { INews } from 'src/app/interfaces/inews';
 import { LoadProvider } from 'src/app/shared/provider/load-provider';
 import { HttpService } from 'src/app/shared/providers/http-service';
@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment.prod';
   standalone: false,
 })
 export class HomePage implements OnInit {
-
+  @ViewChild(IonContent, { static: false }) content!: IonContent;
   category:string = '';
   data:INews | null = null;
 
@@ -33,6 +33,7 @@ export class HomePage implements OnInit {
       this.category = name;
       this.loadData(name);
       this.loading.showLoading(3000, 'Loading data', 'circles');
+      this.scrollToTop();
     }
     this.closeModal();
   }
@@ -45,5 +46,9 @@ export class HomePage implements OnInit {
 
   private closeModal(){
     this.menuCtr.close('menu');
+  }
+
+  private scrollToTop() {
+    this.content.scrollToTop(500);
   }
 }

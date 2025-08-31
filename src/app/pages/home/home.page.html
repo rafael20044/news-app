@@ -8,6 +8,7 @@
             <app-principal-news />
         }@else {
             @if (data) {
+                <h1>News about {{ category }}</h1>
                 @for (item of data.articles; track $index) {
                     <app-card 
                         author="item.author" 

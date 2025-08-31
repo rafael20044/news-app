@@ -17,6 +17,7 @@ import { StorageProvider } from './providers/storage-provider';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './services/user-service';
 import { EncryptProvider } from './providers/encrypt-provider';
+import { RouterLink } from '@angular/router';
 
 
 
@@ -40,7 +41,16 @@ import { EncryptProvider } from './providers/encrypt-provider';
     IonicModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterLink
   ],
-  exports:[InputComponent, ButtonComponent, UserFormComponent, SelectComponent, HeaderComponent, ModalComponent,],
+  exports:[
+    InputComponent, 
+    ButtonComponent, 
+    UserFormComponent, 
+    SelectComponent, 
+    HeaderComponent, 
+    ModalComponent,
+    PrincipalNewsComponent,
+  ],
 })
 export class SharedModule { }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-link',
@@ -8,8 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LinkComponent  implements OnInit {
 
-  constructor() { }
+  @Input() name:string = '';
+  @Input() url:string = '';
+
+  constructor(private readonly router:Router) { }
 
   ngOnInit() {}
+
+  goToPage(){
+    this.router.navigate([this.url]);
+  }
 
 }

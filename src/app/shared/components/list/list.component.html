@@ -1,3 +1,7 @@
-<p>
-  list works!
-</p>
+<ion-list>
+  @for (item of listLinks; track $index) {
+    <ion-item>
+      <app-link name="{{ item.name }}" url="{{ item.url }}" />
+    </ion-item>
+  }
+</ion-list>

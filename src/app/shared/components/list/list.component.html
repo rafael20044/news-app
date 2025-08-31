@@ -1,7 +1,7 @@
 <ion-list>
   @for (item of listLinks; track $index) {
     <ion-item>
-      <app-link name="{{ item.name }}" url="{{ item.url }}" />
+      <app-link name="{{ item }}" (category)="getcategory($event)" />
     </ion-item>
   }
 </ion-list>

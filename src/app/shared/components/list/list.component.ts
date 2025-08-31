@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IList } from 'src/app/interfaces/ilist';
 
 @Component({
@@ -9,43 +9,27 @@ import { IList } from 'src/app/interfaces/ilist';
 })
 export class ListComponent  implements OnInit {
 
-    listLinks: IList[] = [
-      {
-        name: 'Principal news',
-        url: '/home/top-headlines',
-      },
-      {
-        name:'business',
-        url: '/home/business'
-      },
-      {
-        name: 'entertainment',
-        url: '/home/entertainment'
-      },
-      {
-        name: 'general',
-        url: '/home/general'
-      },
-      {
-        name: 'health',
-        url: '/home/health'
-      },
-      {
-        name: 'science',
-        url: '/home/science'
-      },
-      {
-        name: 'sports',
-        url: '/home/sports'
-      },
-      {
-        name: 'technology',
-        url: '/home/technology'
-      }
-    ];
+  @Output() category = new EventEmitter<string>;
+
+  listLinks: string[] = [
+    'Principal news',
+    'business', 
+    'entertainment', 
+    'general', 
+    'health', 
+    'science', 
+    'sports',
+    'technology',
+  ];
 
   constructor() { }
 
   ngOnInit() {}
+
+  
+  getcategory(name:string){
+    //console.log(name)
+    this.category.emit(name);
+  }
 
 }

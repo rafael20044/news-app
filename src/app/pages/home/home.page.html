@@ -1,9 +1,24 @@
-<ion-menu contentId="main-content">
-    <app-side-bar />
+<ion-menu contentId="main-content" menuId="menu">
+    <app-side-bar  (category)="getcategory($event)"/>
 </ion-menu>
 <div class="ion-page" id="main-content">
     <app-header />
     <ion-content class="ion-padding">
-        <app-principal-news />
+        @if (category === 'Principal news') {
+            <app-principal-news />
+        }@else {
+            @if (data) {
+                @for (item of data.articles; track $index) {
+                    <app-card 
+                        author="item.author" 
+                        [data]="item"
+                        date="{{ item.publishedAt }}"
+                        description="{{ item.description }}"
+                        title="{{ item.title }}"
+                        urlImg="{{ item.urlToImage }}"
+                    />
+                }
+            }
+        }
     </ion-content>
 </div>

@@ -5,5 +5,5 @@
 </ion-header>
 <ion-content class="ion-padding" [fullscreen]="true">
   <h1>Categories</h1>
-  <app-list />
+  <app-list (category)="getcategory($event)"/>
 </ion-content>

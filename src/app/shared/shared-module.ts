@@ -53,6 +53,7 @@ import { RouterLink } from '@angular/router';
     PrincipalNewsComponent,
     SideBarComponent,
     PrincipalNewsComponent,
+    CardComponent,
   ],
 })
 export class SharedModule { }

@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { StorageProvider } from '../../providers/storage-provider';
 import { IAuth } from 'src/app/interfaces/iauth';
 import { Const } from 'src/app/const/const';
-import { IList } from 'src/app/interfaces/ilist';
 
 @Component({
   selector: 'app-side-bar',
@@ -13,6 +12,7 @@ import { IList } from 'src/app/interfaces/ilist';
 export class SideBarComponent implements OnInit {
 
   data: IAuth | null = null;
+  @Output() category = new EventEmitter<string>;
 
   constructor(private readonly storage: StorageProvider) { }
 
@@ -22,6 +22,11 @@ export class SideBarComponent implements OnInit {
 
   private loadUserData() {
     this.data = this.storage.get<IAuth>(Const.AUTH);
+  }
+
+  
+  getcategory(name:string){
+    this.category.emit(name);
   }
 
 }

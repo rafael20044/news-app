@@ -1,4 +1,4 @@
-<ion-content fullscreen="true" >
+<ion-content [fullscreen]="true">
   <div class="content">
     <img class="img" src="assets/icon/news-logo.png" />
     <h1>Login</h1>
@@ -7,19 +7,20 @@
         label="email"  
         type="email" 
         placeholder="example@gmail.com" 
-        helperText="Enter a valid email"
         labelPlacement="stacked"
         fill="outline"
         [control]="emailControl"
       />
+      <br>
       <app-input 
         label="password"  
         type="password" 
         placeholder="************" 
-        helperText="Enter your password"
         labelPlacement="stacked"
+        fill="outline"
         [control]="passwordControl"
       />
+      <br>
       <app-button 
         type="button"
         shape="round"

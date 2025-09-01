@@ -18,7 +18,7 @@ export class InputComponent  implements OnInit {
   @Input() placeholder:string = '';
   @Input() value:string = '';
   @Input() labelPlacement:LabelPlacementType = 'fixed';
-  @Input() fill:FillType = '';
+  @Input() fill:FillType = 'outline';
   @Input() helperText:string = '';
   @Input() errorText:string = '';
   @Input() control:FormControl = new FormControl();

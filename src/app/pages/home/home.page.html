@@ -11,7 +11,7 @@
                 <h1>News about {{ category }}</h1>
                 @for (item of data.articles; track $index) {
                     <app-card 
-                        author="item.author" 
+                        author="{{item.author}}" 
                         [data]="item"
                         date="{{ item.publishedAt }}"
                         description="{{ item.description }}"

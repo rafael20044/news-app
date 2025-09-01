@@ -3,17 +3,18 @@
     @if (data) {
     <ion-header>
       <ion-toolbar>
-        <h1 class="title">{{ data.title }}</h1>
         <ion-buttons slot="end">
           <ion-button (click)="setClose()">Close</ion-button>
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding">
+      <h1 class="title">{{ data.title }}</h1>
+      <img src="{{ data.urlToImage }}" alt="">
       <p>
         {{ data.content }}
       </p>
-      <p class="link">show more information in browser</p>
+      <p class="link" (click)="abrirNavegador()" >show more information in browser</p>
     </ion-content>
     }
   </ng-template>

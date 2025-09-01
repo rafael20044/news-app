@@ -11,7 +11,7 @@
     }
   </ion-toolbar>
 </ion-header>
-<ion-content class="ion-padding" [fullscreen]="true">
-  <h1>Categories</h1>
+<ion-content [fullscreen]="true">
+  <ion-text><h1>Categories</h1></ion-text>
   <app-list (category)="getcategory($event)" />
 </ion-content>

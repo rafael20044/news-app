@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonContent, MenuController } from '@ionic/angular';
 import { INews } from 'src/app/interfaces/inews';
-import { LoadProvider } from 'src/app/shared/provider/load-provider';
+import { LoadProvider } from 'src/app/shared/providers/load-provider';
 import { HttpService } from 'src/app/shared/providers/http-service';
 import { environment } from 'src/environments/environment.prod';
 

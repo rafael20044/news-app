@@ -18,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './services/user-service';
 import { EncryptProvider } from './providers/encrypt-provider';
 import { RouterLink } from '@angular/router';
+import { ToastProvide } from './providers/toast-provide';
 
 
 
@@ -35,7 +36,7 @@ import { RouterLink } from '@angular/router';
     SideBarComponent,
     UserFormComponent,
   ],
-  providers: [HttpService, StorageProvider, UserService, EncryptProvider],
+  providers: [HttpService, StorageProvider, UserService, EncryptProvider, ToastProvide],
   imports: [
     CommonModule,
     IonicModule,

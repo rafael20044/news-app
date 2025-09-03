@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonContent, MenuController } from '@ionic/angular';
+import { IonContent, MenuController, RefresherCustomEvent } from '@ionic/angular';
 import { INews } from 'src/app/interfaces/inews';
 import { LoadProvider } from 'src/app/shared/providers/load-provider';
 import { HttpService } from 'src/app/shared/providers/http-service';
@@ -36,6 +36,13 @@ export class HomePage implements OnInit {
       this.scrollToTop();
     }
     this.closeModal();
+  }
+
+  handleRefresh(event: RefresherCustomEvent) {
+    setTimeout(() => {
+      this.loadData(this.category);
+      event.target.complete();
+    }, 2000);
   }
 
   private async loadData(category:string){

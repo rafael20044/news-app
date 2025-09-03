@@ -4,6 +4,9 @@
 <div class="ion-page" id="main-content">
     <app-header />
     <ion-content class="ion-padding">
+        <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+            <ion-refresher-content></ion-refresher-content>
+        </ion-refresher>
         @if (category === 'Principal news') {
             <app-principal-news />
         }@else {

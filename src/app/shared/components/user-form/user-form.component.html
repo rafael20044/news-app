@@ -9,6 +9,9 @@
   <app-input label="password" placeholder="**************" type="password" [control]="passwordControl"
     labelPlacement="stacked" />
   <br>
+  <app-input label="Confirm Password" placeholder="**************" type="password" [control]="passwordControl2"
+    labelPlacement="stacked" [hidden]="!isRegister" />
+  <br>
   <app-select label="Select your country" [control]="selectControl" [countries]="countries" />
   <br>
   <div class="buttons">

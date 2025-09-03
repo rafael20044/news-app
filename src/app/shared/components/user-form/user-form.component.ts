@@ -27,6 +27,7 @@ export class UserFormComponent  implements OnInit {
   lastNameControl = new FormControl('', [Validators.required,]);
   emailControl = new FormControl('', [Validators.required, Validators.email,]);
   passwordControl = new FormControl('', Validators.required);
+  passwordControl2 = new FormControl('', Validators.required);
   selectControl = new FormControl('', Validators.required);
   formGroup:FormGroup = new FormGroup({
     name: this.nameControl,
@@ -74,6 +75,10 @@ export class UserFormComponent  implements OnInit {
     }
     if (!this.emailControl.valid) {
       this.toastProvider.showToast('Please enter a valid email', 3000, 'warning');
+      return;
+    }
+    if (this.passwordControl.value !== this.passwordControl2.value) {
+      this.toastProvider.showToast('The passwords do not match', 3000, 'warning');
       return;
     }
     const user = this.userService.createUser({uiid: uuid(), ...this.formGroup.value});
